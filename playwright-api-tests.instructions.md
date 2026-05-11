@@ -1,5 +1,5 @@
 ---
-description: "Use when creating Playwright API tests, adding new API page objects, adding test methods, or generating test specs for My Basket App endpoints. Covers project structure, page object pattern, auth flow, naming conventions, and spec file conventions."
+description: Use when creating Playwright API tests, adding new API page objects, adding test methods, or generating test specs for My Basket App endpoints. Covers project structure, page object pattern, auth flow, naming conventions, and spec file conventions.
 applyTo: "tests/**/*.spec.ts", "src/apis/**/*.ts"
 ---
 

@@ -455,10 +455,7 @@ Open that file and read it carefully.
 ## Step 6 — Governed generation
 
 ```
-/test-generation Generate the full Playwright TypeScript test suite
-for MyBasket. Use the page objects in src/apis/, the auth fixture
-from src/fixtures/api.fixtures.ts, and test data from
-src/data/testData.ts. Place all specs in tests/api/
+/test-generation Generate One Single E2E Happy Path journey by following instructions in #file:playwright-api-tests.instructions.md file
 ```
 
 **Check the generated files against these questions:**

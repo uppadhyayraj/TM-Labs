@@ -430,7 +430,7 @@ Create an instruction and add the contents from playwright-api-tests.instruction
 
 Wait for Copilot to finish scanning the project.
 
-**It will generate a file at `.github/copilot-instructions.md`**
+**It will generate a file at `.github/instructions/playwright-api-tests.instructions.md`**
 
 Open that file and read it carefully.
 

@@ -48,8 +48,8 @@ curl http://localhost:3000/health
 Open Copilot Chat in VS Code and run:
 
 ```
-/test-execution Run a health check against all six MyBasket services.
-Base URL: http://localhost:3000
+/test-execution Run a health check against all MyBasket services.
+Base URL: http://localhost:3000 and api schema is at http://localhost:3000/api-docs.json
 ```
 
 **What to look for:**
@@ -66,8 +66,8 @@ Base URL: http://localhost:3000
 
 ```
 /api-planning Read the OpenAPI schema at http://localhost:3000/api-docs.json
-and generate a structured test plan for the full user journey
-and realistic edge cases. Include context-aware sample data.
+and generate a structured test plan for the full happy path user journey.
+Include context-aware sample data.
 ```
 
 **What to look for:**
@@ -112,7 +112,7 @@ Chain JWT tokens and resource IDs automatically between steps.
 
 ```
 /test-generation Convert the test plan into runnable Playwright
-TypeScript tests. Place them in the correct directory.
+tests. Place them in the correct directory.
 ```
 
 Wait for the files to appear.

@@ -55,7 +55,7 @@ your-project/
 Copy this exactly:
 
 ```typescript
-// src/pages/BaseAPI.ts
+// src/apis/BaseAPI.ts
 import { APIRequestContext } from '@playwright/test';
 
 /**
@@ -100,7 +100,7 @@ export class BaseAPI {
 ## Step 2 — Ask the AI to build on it
 
 ```
-/test-generation I have a BaseAPI class at src/pages/BaseAPI.ts.
+/test-generation I have a BaseAPI class at src/apis/BaseAPI.ts.
 Using it as the foundation, generate API page objects for the
 following MyBasket services: UserAPI, ProductAPI, CartAPI, OrderAPI.
 Each should extend BaseAPI and implement the endpoints from
@@ -119,7 +119,7 @@ Wait for the files to appear.
 **Your generated structure should look like this:**
 
 ```
-src/pages/
+src/apis/
 ├── BaseAPI.ts        ← your file, untouched
 ├── UserAPI.ts        ← extends BaseAPI
 ├── ProductAPI.ts     ← extends BaseAPI
@@ -130,7 +130,7 @@ src/pages/
 **What a generated file should look like:**
 
 ```typescript
-// src/pages/UserAPI.ts  (AI generated)
+// src/apis/UserAPI.ts  (AI generated)
 import { BaseAPI } from './BaseAPI';
 
 export class UserAPI extends BaseAPI {
@@ -164,7 +164,7 @@ export class UserAPI extends BaseAPI {
 ## Step 3 — Re-generate the test specs
 
 ```
-/test-generation Using the page objects in src/pages/, generate
+/test-generation Using the page objects in src/apis/, generate
 Playwright test specs for the full happy-path journey and the
 edge cases from the test plan. Place specs in tests/api/
 ```
@@ -220,7 +220,7 @@ your-project/
 ├── playwright.config.ts
 ├── test-plan.md
 ├── src/
-│   └── pages/
+│   └── apis/
 │       ├── BaseAPI.ts          ← you wrote this
 │       ├── UserAPI.ts          ← AI generated, extends BaseAPI
 │       ├── ProductAPI.ts       ← AI generated, extends BaseAPI

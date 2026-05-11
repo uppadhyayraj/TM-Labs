@@ -48,7 +48,7 @@ Create this folder and file **yourself**. Do not ask the AI to create it.
 ```
 your-project/
 └── src/
-    └── pages/
+    └── apis/
         └── BaseAPI.ts     ← create this now
 ```
 

@@ -424,13 +424,9 @@ If your structure matches this, continue to Step 5.
 
 ---
 
-## Step 5 — Run `/init`
+## Step 5 — Create Instruction File
 
-Type this in Copilot Chat. Nothing else — no additional prompt:
-
-```
-/init
-```
+Create an instruction and add the contents from playwright-api-tests.instructions.md file
 
 Wait for Copilot to finish scanning the project.
 

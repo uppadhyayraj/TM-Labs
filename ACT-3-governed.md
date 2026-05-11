@@ -474,40 +474,8 @@ src/data/testData.ts. Place all specs in tests/api/
 
 ---
 
-## Step 7 — Break a test, then heal it
 
-The presenter will now simulate a schema change in the MyBasket Order service.
-
-One field in the order response will be renamed: `order_id` → `orderId`
-
-Run your tests:
-
-```bash
-npx playwright test tests/api/
-```
-
-**One assertion will fail.** Note which test and which line.
-
-Now run:
-
-```
-/test-healing The order placement assertion is failing after a schema
-change. Detect the mismatch and patch the assertion to match the
-current API response. Re-run to confirm green.
-```
-
-**What to look for:**
-- The AI finds the failing assertion without being told which file
-- It patches only that assertion — nothing else changes
-- Re-running confirms all tests pass
-
-> The healing skill can do this because the governed framework  
-> gave it enough context to know what "correct" looks like.  
-> In Act 1, there was no contract to heal back to.
-
----
-
-## Step 8 — Final HTML report
+## Step 7 — Final HTML report
 
 ```
 /test-execution Generate the HTML report for the governed run.

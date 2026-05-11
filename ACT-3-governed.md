@@ -146,12 +146,243 @@ src/
  * Response interfaces for all MyBasket API endpoints.
  * Shared across page objects and test specs.
  */
-export interface LoginResponse  { token: string; user_id: string; }
-export interface Product        { id: string; name: string; price: number; stock: number; }
-export interface CartItem       { product_id: string; quantity: number; price: number; }
-export interface CartResponse   { items: CartItem[]; total: number; }
-export interface OrderResponse  { order_id: string; status: string; total: number; }
-export interface HealthResponse { status: 'ok' | 'degraded' | 'down'; service: string; }
+// ---------------------------------------------------------------------------
+// Shared / utility
+// ---------------------------------------------------------------------------
+
+export interface ApiError {
+  error:    string;
+  details?: object[];
+}
+
+// ---------------------------------------------------------------------------
+// Gateway
+// ---------------------------------------------------------------------------
+
+export interface ServiceHealth {
+  status:       string;
+  responseTime: number;
+}
+
+export interface HealthResponse {
+  gateway:  string;
+  status:   'healthy' | 'unhealthy';
+  services: {
+    'product-service': ServiceHealth;
+    'cart-service':    ServiceHealth;
+    'order-service':   ServiceHealth;
+    'ai-service':      ServiceHealth;
+    'user-service':    ServiceHealth;
+  };
+  timestamp: string;
+}
+
+export interface GatewayService {
+  name: string;
+  path: string;
+}
+
+export interface GatewayInfo {
+  gateway:   string;
+  version:   string;
+  services:  GatewayService[];
+  timestamp: string;
+}
+
+// ---------------------------------------------------------------------------
+// Users / Auth
+// ---------------------------------------------------------------------------
+
+export interface UserPublic {
+  id:        string;
+  username:  string;
+  name:      string;
+  email:     string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface AuthResponse {
+  user:  UserPublic;
+  token: string;
+}
+
+export interface RegisterRequest {
+  username: string;
+  password: string;
+  name:     string;
+  email:    string;
+}
+
+export interface LoginRequest {
+  username: string;
+  password: string;
+}
+
+export interface UpdateUserRequest {
+  name?:     string;
+  email?:    string;
+  password?: string;
+}
+
+// ---------------------------------------------------------------------------
+// Products
+// ---------------------------------------------------------------------------
+
+export interface Product {
+  id:          string;
+  name:        string;
+  price:       number;
+  description: string;
+  image:       string;
+  dataAiHint:  string;
+  category?:   string;
+  inStock:     boolean;
+}
+
+export interface Pagination {
+  total:      number;
+  page:       number;
+  limit:      number;
+  totalPages: number;
+}
+
+export interface ProductList {
+  products:   Product[];
+  pagination: Pagination;
+}
+
+// ---------------------------------------------------------------------------
+// Cart
+// ---------------------------------------------------------------------------
+
+export interface CartItem {
+  id:           string;
+  name:         string;
+  price:        number;
+  description:  string;
+  image:        string;
+  dataAiHint:   string;
+  quantity:     number;
+  addedAt:      string;
+}
+
+export interface Cart {
+  id:          string;
+  userId:      string;
+  items:       CartItem[];
+  totalAmount: number;
+  totalItems:  number;
+  createdAt:   string;
+  updatedAt:   string;
+}
+
+export interface AddToCartRequest {
+  productId:  string;
+  quantity?:  number;
+}
+
+export interface UpdateCartItemRequest {
+  quantity: number;
+}
+
+// ---------------------------------------------------------------------------
+// Orders
+// ---------------------------------------------------------------------------
+
+export interface Address {
+  street:  string;
+  city:    string;
+  state:   string;
+  zipCode: string;
+  country: string;
+}
+
+export interface PaymentMethod {
+  type:   'credit_card' | 'debit_card' | 'paypal' | 'apple_pay' | 'google_pay';
+  last4?: string;
+  brand?: string;
+}
+
+export interface OrderItem {
+  id:           string;
+  name:         string;
+  price:        number;
+  quantity:     number;
+  image?:       string;
+  description?: string;
+  dataAiHint?:  string;
+}
+
+export type OrderStatus =
+  | 'pending'
+  | 'confirmed'
+  | 'processing'
+  | 'shipped'
+  | 'delivered'
+  | 'cancelled';
+
+export interface Order {
+  id:                 string;
+  userId:             string;
+  items:              OrderItem[];
+  totalAmount:        number;
+  status:             OrderStatus;
+  shippingAddress:    Address;
+  billingAddress:     Address;
+  paymentMethod:      PaymentMethod;
+  trackingNumber?:    string;
+  estimatedDelivery?: string;
+  actualDelivery?:    string;
+  createdAt:          string;
+  updatedAt:          string;
+}
+
+export interface OrderList {
+  orders:     Order[];
+  pagination: Pagination;
+}
+
+export interface CreateOrderRequest {
+  items:           OrderItem[];
+  shippingAddress: Address;
+  billingAddress:  Address;
+  paymentMethod:   PaymentMethod;
+}
+
+// ---------------------------------------------------------------------------
+// Recommendations
+// ---------------------------------------------------------------------------
+
+export interface Suggestion {
+  name:       string;
+  reason:     string;
+  category:   string;
+  confidence: number;
+}
+
+export interface GrocerySuggestionsRequest {
+  cartItems?: string[];
+}
+
+export interface GrocerySuggestionsResponse {
+  suggestions: Suggestion[];
+  generatedAt: string;
+  confidence:  number;
+}
+
+export interface PersonalizedRecommendationsRequest {
+  cartItems?:      string[];
+  userId?:         string;
+  maxSuggestions?: number;
+}
+
+export interface PersonalizedRecommendationsResponse {
+  suggestions: Suggestion[];
+  userId:      string;
+  generatedAt: string;
+  confidence:  number;
+}
 ```
 
 **Why this matters:**  

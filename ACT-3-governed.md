@@ -99,7 +99,7 @@ src/
 ```typescript
 // src/fixtures/api.fixtures.ts
 import { test as base }  from '@playwright/test';
-import { UserAPI }       from '../pages/UserAPI';
+import { UserAPI }       from '../apis/UserAPI';
 import { TEST_USER }     from '../data/testData';
 
 /**
@@ -172,7 +172,7 @@ your-project/
 ├── playwright.config.ts
 ├── test-plan.md
 ├── src/
-│   ├── pages/
+│   ├── apis/
 │   │   ├── BaseAPI.ts          ← from Act 2
 │   │   ├── UserAPI.ts          ← from Act 2
 │   │   ├── ProductAPI.ts       ← from Act 2
@@ -229,7 +229,7 @@ Open that file and read it carefully.
 
 ```
 /test-generation Generate the full Playwright TypeScript test suite
-for MyBasket. Use the page objects in src/pages/, the auth fixture
+for MyBasket. Use the page objects in src/apis/, the auth fixture
 from src/fixtures/api.fixtures.ts, and test data from
 src/data/testData.ts. Place all specs in tests/api/
 ```
@@ -321,7 +321,7 @@ your-project/
 ├── playwright.config.ts
 ├── test-plan.md
 ├── src/
-│   ├── pages/
+│   ├── apis/
 │   │   ├── BaseAPI.ts
 │   │   ├── UserAPI.ts
 │   │   ├── ProductAPI.ts
